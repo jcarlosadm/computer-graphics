@@ -8,19 +8,19 @@ int degree = 0;
 
 void SpecialInput(int key, int x, int y)
 {
-	switch(key)
-	{
-		case GLUT_KEY_LEFT:
-			++direction;
-		break;
-		case GLUT_KEY_RIGHT:
-			--direction;
-		break;
-	}
+    switch(key)
+    {
+        case GLUT_KEY_LEFT:
+            ++direction;
+        break;
+        case GLUT_KEY_RIGHT:
+            --direction;
+        break;
+    }
 }
 
 float get_rad(float mod, float mult) {
-	return (mod + degree + 90 * mult) * PI/180;
+    return (mod + degree + 90 * mult) * PI/180;
 }
 
  
@@ -35,16 +35,14 @@ void windmill() {
     
     glEnd();
     
-    glTranslatef(0, 3, 0);
-    
     for (i = 0; i < 4; i++) {
         glColor3f(0.1f * i, 0.05f + i * 0.2f, 0.3f * i);
 
         glBegin(GL_TRIANGLES);
         
-        glVertex2f(0,0);
-        glVertex2f(sin(get_rad(0,i)), cos(get_rad(0,i)));
-        glVertex2f(sin(get_rad(25,i)), cos(get_rad(25,i)));
+        glVertex2f(0.0f,3.0f);
+        glVertex2f(sin(get_rad(0,i)), cos(get_rad(0,i))+3.0f);
+        glVertex2f(sin(get_rad(25,i)), cos(get_rad(25,i))+3.0f);
         
         glEnd();
     }
