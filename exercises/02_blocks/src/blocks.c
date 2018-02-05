@@ -4,8 +4,9 @@
 
 #include "blocks.h"
 
+#define n_elem 6
+
 int direction = 1;
-const int n_elem = 6;
 
 int active_blocks[n_elem];
 
