@@ -2,6 +2,8 @@
 #include <GL/glut.h>
 #include <math.h>
 
+#include "blocks.h"
+
 int direction = 1;
 const int n_elem = 6;
 int active_blocks[n_elem];
@@ -56,7 +58,7 @@ void blocks() {
     }
 }
 
-void display() {
+void blocks_display() {
  
     glClear(GL_COLOR_BUFFER_BIT);
     glLoadIdentity();
@@ -72,7 +74,7 @@ void display() {
  
 }
 
-void doFrame(int v) {
+void blocks_doFrame(int v) {
     int i;
     if(direction == 0)
         init_blocks();
@@ -126,42 +128,16 @@ void doFrame(int v) {
 
     if (down == 0)
         down = (num_finished == n_elem);
-    /*if(num_finished == n_elem){
-        down = 1;
-        if(flag==max_flag){
-            init_blocks();
-            flag=0;
-        }
-        else
-            ++flag;
-    }*/
 
     glutPostRedisplay();
-    glutTimerFunc(20,doFrame,0);
+    glutTimerFunc(20,blocks_doFrame,0);
 }
  
-void init() {
+void blocks_init() {
     glClearColor(1.0f, 0.6f, 0, 1);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     glOrtho(0, 7, -1, 4, -1, 1);
     glMatrixMode(GL_MODELVIEW);
     init_blocks();
-}
- 
-int main(int argc, char** argv) {
-    glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_DOUBLE);
-    glutInitWindowSize(700,500);
-    glutInitWindowPosition(100,100);  
-    glutCreateWindow("blocks");
- 
-    init();
- 
-    glutDisplayFunc(display);  
-    glutTimerFunc(200,doFrame,0);
-   
- 
-    glutMainLoop();
-    return 0;
 }

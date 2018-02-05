@@ -1,7 +1,9 @@
+#include "windmill.h"
+
 #include <GL/gl.h>
 #include <GL/glut.h>
 #include <math.h>
- 
+
 const double PI = 3.141592654;
 int direction = 1;
 int degree = 0;
@@ -48,7 +50,7 @@ void windmill() {
     }
 }
 
-void display() {
+void windmill_display() {
  
     glClear(GL_COLOR_BUFFER_BIT);
     glLoadIdentity();
@@ -64,33 +66,16 @@ void display() {
  
 }
 
-void doFrame(int v) {
+void windmill_doFrame(int v) {
     degree += direction;
     glutPostRedisplay();
-    glutTimerFunc(20,doFrame,0);
+    glutTimerFunc(20,windmill_doFrame,0);
 }
  
-void init() {
+void windmill_init() {
     glClearColor(1.0f, 0.6f, 0, 1);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     glOrtho(0, 7, -1, 4, -1, 1);
     glMatrixMode(GL_MODELVIEW);
-}
- 
-int main(int argc, char** argv) {
-    glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_DOUBLE);
-    glutInitWindowSize(700,500);
-    glutInitWindowPosition(100,100);  
-    glutCreateWindow("windmill");
- 
-    init();
- 
-    glutDisplayFunc(display);  
-    glutTimerFunc(200,doFrame,0);
-   
- 
-    glutMainLoop();
-    return 0;
 }
