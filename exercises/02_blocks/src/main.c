@@ -16,5 +16,6 @@ int main(int argc, char *argv[])
     glutTimerFunc(200, blocks_doFrame, 0);
  
     glutMainLoop();
+    
 	return 0;
 }
