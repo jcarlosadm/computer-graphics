@@ -14,13 +14,13 @@
 # project name (generate executable with this name)
 TARGET   = windmill
 
-CC       = g++
+CC       = gcc
 # compiling flags here
-CFLAGS   = -Wall -lGLU -lGL -lglut -lm
+CFLAGS   = -Wall
 
-LINKER   = g++
+LINKER   = gcc
 # linking flags here
-LFLAGS   = -Wall -lGLU -lGL -lglut -lm
+LFLAGS   = -lGLU -lGL -lglut -lm
 
 # change these to proper directories where each file should be
 SRCDIR   = src
