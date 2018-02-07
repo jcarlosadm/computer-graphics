@@ -33,7 +33,7 @@ float get_rad(float mod, float mult) {
 }
 
  
-void windmill() {
+void windmill(float x) {
     int i;
     float center_x = 0.0f;
     float center_y = 0.2f;
@@ -44,9 +44,9 @@ void windmill() {
     
     glBegin(GL_TRIANGLES);
     
-    glVertex2f(0, -0.8f);
-    glVertex2f(0.005f, 0.2f);
-    glVertex2f(-0.005f, 0.2f);
+    glVertex2f(x, -0.8f);
+    glVertex2f(x+0.005f, 0.2f);
+    glVertex2f(x-0.005f, 0.2f);
     
     glEnd();
     
@@ -55,10 +55,10 @@ void windmill() {
 
         glBegin(GL_TRIANGLES);
         
-        glVertex2f(center_x, center_y);
-        glVertex2f((sin(get_rad(0,i))*adjust_radius) + center_x,
+        glVertex2f(x+center_x, center_y);
+        glVertex2f((sin(get_rad(0,i))*adjust_radius) + x+center_x,
             (cos(get_rad(0,i))*adjust_radius) + center_y);
-        glVertex2f((sin(get_rad(adjust_spade,i))*adjust_radius) + center_x,
+        glVertex2f((sin(get_rad(adjust_spade,i))*adjust_radius) + x+center_x,
             (cos(get_rad(adjust_spade,i))*adjust_radius) + center_y);
         
         glEnd();
@@ -70,7 +70,10 @@ void windmill_display() {
     glClear(GL_COLOR_BUFFER_BIT);
 
     glutSpecialFunc(SpecialInput);
-    windmill();
+    // 01
+    windmill(0.0f);
+    // 02
+    windmill(0.5f);
  
     glutSwapBuffers();
  
